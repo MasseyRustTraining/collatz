@@ -2,16 +2,20 @@
 //! exercise](https://google.github.io/comprehensive-rust/control-flow-basics/exercise.html)
 //! from Comprehensive Rust.
 
-/// Returns the number of steps (length - 1) of the [Collatz
+/// Returns [Some] number of steps (length - 1) of the [Collatz
 /// Sequence](https://en.wikipedia.org/wiki/Collatz_conjecture)
-/// starting at `x`.
+/// starting at `x`; if `x` is 0, instead return [None].
 ///
 /// # Examples
 ///
 /// ```
-/// assert!(collatz_length(3) == 8);
+/// # use collatz::collatz_length;
+/// assert!(collatz_length(3) == Some(7));
 /// ```
-pub fn collatz_length(mut x: u64) -> usize {
+pub fn collatz_length(mut x: u64) -> Option<usize> {
+    if x == 0 {
+        return None;
+    }
     let mut n = 0;
     while x != 1 {
         match x & 1 == 1 {
@@ -26,14 +30,15 @@ pub fn collatz_length(mut x: u64) -> usize {
         }
         n += 1;
     }
-    n
+    Some(n)
 }
 
 #[test]
 fn test_collatz_length() {
-    assert!(collatz_length(1) == 0);
-    assert!(collatz_length(3) == 7);
+    assert!(collatz_length(0) == None);
+    assert!(collatz_length(1).unwrap() == 0);
+    assert!(collatz_length(3).unwrap() == 7);
     // From https://en.wikipedia.org/wiki/Collatz_conjecture
-    assert!(collatz_length(670_617_279) == 986);
-    assert!(collatz_length(989_345_275_647) == 1348);
+    assert!(collatz_length(670_617_279).unwrap() == 986);
+    assert!(collatz_length(989_345_275_647).unwrap() == 1348);
 }
