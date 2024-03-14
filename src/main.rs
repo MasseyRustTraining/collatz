@@ -5,6 +5,12 @@
 /// Returns the length of the [Collatz
 /// Sequence](https://en.wikipedia.org/wiki/Collatz_conjecture)
 /// starting at `x`.
+///
+/// # Examples
+///
+/// ```
+/// assert!(collatz_length(3) == 8);
+/// ```
 fn collatz_length(mut x: i32) -> u32 {
     let mut n = 1;
     while x != 1 {
@@ -18,6 +24,11 @@ fn collatz_length(mut x: i32) -> u32 {
         n += 1;
     }
     n
+}
+
+#[test]
+fn test_collatz_length() {
+    assert!(collatz_length(1) == 1);
 }
 
 fn main() {
