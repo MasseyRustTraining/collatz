@@ -31,7 +31,11 @@ fn collatz_length(mut x: u64) -> usize {
 
 #[test]
 fn test_collatz_length() {
-    assert!(collatz_length(1) == 1);
+    assert!(collatz_length(1) == 0);
+    assert!(collatz_length(3) == 7);
+    // From https://en.wikipedia.org/wiki/Collatz_conjecture
+    assert!(collatz_length(670_617_279) == 986);
+    assert!(collatz_length(989_345_275_647) == 1348);
 }
 
 fn main() {
