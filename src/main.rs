@@ -11,7 +11,7 @@
 /// ```
 /// assert!(collatz_length(3) == 8);
 /// ```
-fn collatz_length(mut x: i32) -> u32 {
+fn collatz_length(mut x: u64) -> usize {
     let mut n = 1;
     while x != 1 {
         match x & 1 == 1 {
