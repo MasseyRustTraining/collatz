@@ -1,13 +1,16 @@
-fn collatz_length(x: i32) -> u32 {
-    if x == 1 {
-        1
-    } else if x & 1 == 1 {
-        // x is odd.
-        1 + collatz_length(3 * x + 1)
-    } else {
-        // x is even.
-        1 + collatz_length(x / 2)
+fn collatz_length(mut x: i32) -> u32 {
+    let mut n = 1;
+    while x != 1 {
+        if x & 1 == 1 {
+            // x is odd.
+            x = 3 * x + 1;
+        } else {
+            // x is even.
+            x = x / 2;
+        }
+        n += 1;
     }
+    n
 }
 
 fn main() {
