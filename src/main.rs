@@ -2,7 +2,7 @@
 //! exercise](https://google.github.io/comprehensive-rust/control-flow-basics/exercise.html)
 //! from Comprehensive Rust.
 
-/// Returns the length of the [Collatz
+/// Returns the number of steps (length - 1) of the [Collatz
 /// Sequence](https://en.wikipedia.org/wiki/Collatz_conjecture)
 /// starting at `x`.
 ///
@@ -12,7 +12,7 @@
 /// assert!(collatz_length(3) == 8);
 /// ```
 fn collatz_length(mut x: u64) -> usize {
-    let mut n = 1;
+    let mut n = 0;
     while x != 1 {
         match x & 1 == 1 {
             true => {
